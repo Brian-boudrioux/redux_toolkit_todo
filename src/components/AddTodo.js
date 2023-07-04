@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addTask } from '../store/tasks';
 
 const AddTodo = () => {
 	const [value, setValue] = useState('');
+	const dispatch = useDispatch();
 
 	const onSubmit = (event) => {
 		event.preventDefault();
-		
-
+		dispatch(addTask({id: Date.now(), name: value, status: false}));
 		setValue("");
 	};
 

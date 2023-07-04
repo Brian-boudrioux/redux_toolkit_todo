@@ -1,9 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { removeTask } from '../store/tasks';
 
 const TodoItem = ({ id, title }) => {
 
-	const removeTask = () => {
+	const dispatch = useDispatch();
 
+	const deleteTask = () => {
+		dispatch(removeTask(id));
 	}
 
 	return (
@@ -12,7 +16,7 @@ const TodoItem = ({ id, title }) => {
 				{title}
 			</div>
 			<div>
-				<button className="remove-task-button" onClick={removeTask}>Delete</button>
+				<button className="remove-task-button" onClick={deleteTask}>Delete</button>
 			</div>
 		</li>
 	);
